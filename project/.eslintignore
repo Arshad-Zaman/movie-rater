@@ -1,0 +1,11 @@
+src/index.js
+src/reportWebVitals.js
+src/setupTests.js
+{
+    "ignorePatterns": ["temp.js", "**/vendor/*.js"],
+    "rules": {
+        "react/jsx-filename-extension",
+        "react/no-array-index-key",
+        "react-hooks/exhaustive-deps"
+    }
+}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+ {{title}}
+</h1>
+<img src="{{img_url}}" alt="{{title}}_poster" style="max-width: 50%; max-height: 40%; margin-left: auto;margin-right: auto; border:3px rounded; border-radius:10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"/>
+<h2 style="max-width: 40%; margin-left: auto;margin-right: auto;">
+  {{overview}}
+</h2>
+
+<form method="POST" action="/rate">
+  <input type="hidden" name="movie_id" value="{{movie_id}}">
+  <div class="field has-addons has-addons-centered">
+    <label class="rating" name="rating">Rating: </label>
+    <div class="control">
+      <div class="select">
+    <select id="rating" name="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </div>
+</div>
+</div>
+
+<div class="field">
+  <label class="label">Comment</label>
+  <div class="control">
+  <textarea textarea class="textarea" name="comment" placeholder="Leave a comment"></textarea>
+</div>
+</div>
+
+<div class="field has-addons has-addons-centered">
+  <div class="buttons">
+  <button class="button is-warning">Submit</button>
+</div>
+</div>
+<br>
+</form>
+
+{% for rating in ratings %}
+<div class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{rating.username}}</strong> Rating:  </strong> <b><small>{{rating.rating}}/5</small></b>
+          <br>
+          {{rating.comment}}
+        </p>
+      </div>
+    </div>
+  </article>
+</div>
+{% endfor %}
+
+{% endblock %}
